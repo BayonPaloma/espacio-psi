@@ -745,6 +745,23 @@ footer i {
 @media (max-width: 768px) {
   #inicio {
     background-image: url(./assets/img/background-mobile.png);
+    padding: 0px 40px;
+  }
+
+  h3 {
+    font-size: 24px;
+  }
+
+  p {
+    font-size: 18px;
+  }
+
+  .contenido-hero p {
+    padding: 0px;
+  }
+
+  .especialidades {
+    margin-top: 0px;
   }
 
   #especialidades {
@@ -779,19 +796,16 @@ footer i {
   }
 
   .col h3 {
-    font-size: 20px;
     margin-top: 0;
     margin-bottom: 12px;
   }
 
   .col p {
-    font-size: 15px;
     line-height: 1.5;
     margin-bottom: 10px;
   }
 
   .titulo-lista {
-    font-size: 1.3rem;
     margin: 35px 0 20px;
     padding-top: 25px;
   }
@@ -861,13 +875,11 @@ footer i {
   }
 
   .texto-irene h3 {
-    font-size: 20px;
     margin-top: 25px;
     margin-bottom: 12px;
   }
 
   .texto-irene p {
-    font-size: 15px;
     line-height: 1.6;
     margin-bottom: 15px;
   }
@@ -878,7 +890,6 @@ footer i {
   }
 
   .texto-irene li {
-    font-size: 15px;
     line-height: 1.5;
     margin-bottom: 10px;
   }
@@ -895,7 +906,6 @@ footer i {
   }
 
   .linea-modalidad {
-    font-size: 19px;
     margin-top: 12px;
   }
 
@@ -917,17 +927,14 @@ footer i {
   }
 
   .servicio h3 {
-    font-size: 19px;
     line-height: 1.3;
     margin-bottom: 10px;
   }
 
   .servicio p {
-    font-size: 15px;
     line-height: 1.55;
   }
 
-  /* Desactivamos el efecto hover en celular */
   .servicio:hover {
     transform: none;
     background-color: rgba(255, 255, 255, 0.08);
@@ -953,6 +960,15 @@ footer i {
     gap: 0;
   }
 
+  .desc-formulario p {
+    font-size: 18px;
+    padding-bottom: 20px;
+  }
+
+  .form-group label {
+    font-size: 18px;
+  }
+
   footer {
     grid-template-columns: 1fr;
     gap: 35px;
@@ -966,6 +982,15 @@ footer i {
   }
 
   footer h2 {
-    font-size: 25px;
+    font-size: 30px;
+  }
+
+  footer h3 {
+    font-size: 24px;
+  }
+
+  footer p,
+  footer a {
+    font-size: 18px;
   }
 }
