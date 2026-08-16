@@ -945,6 +945,9 @@ footer i {
     padding: 20px;
   }
 
+  #ubicacion {
+    padding: 80px 40px;
+  }
   #contacto {
     padding: 80px 40px;
   }
