@@ -58,6 +58,37 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+//animaciones
+document.addEventListener("DOMContentLoaded", () => {
+  const observerOptions = {
+    root: null,
+    threshold: 0.15,
+  };
+
+  const revealCallback = (entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("revealed");
+        observer.unobserve(entry.target);
+      }
+    });
+  };
+
+  const revealObserver = new IntersectionObserver(
+    revealCallback,
+    observerOptions,
+  );
+
+  const elementsToAnimate = document.querySelectorAll(
+    ".col, .problematica, .texto-irene, .servicio",
+  );
+
+  elementsToAnimate.forEach((el) => {
+    el.classList.add("reveal-hidden");
+    revealObserver.observe(el);
+  });
+});
+
 //formulario
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.querySelector("#contacto form");

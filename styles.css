@@ -720,6 +720,19 @@ footer i {
   font-size: 14px;
 }
 
+.reveal-hidden {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.6s ease-out,
+    transform 0.6s ease-out;
+}
+
+.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .whatsapp-float {
   position: fixed;
   width: 50px;
@@ -948,6 +961,7 @@ footer i {
   #ubicacion {
     padding: 80px 40px;
   }
+
   #contacto {
     padding: 80px 40px;
   }
