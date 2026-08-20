@@ -97,54 +97,48 @@ const esTouch = window.matchMedia(
 ).matches;
 const esMobile = window.matchMedia("(max-width: 768px)").matches;
 
-if (esTouch && !esMobile) {
-  tarjetas.forEach((tarjeta) => {
-    tarjeta.addEventListener("click", (e) => {
-      if (
-        e.target.closest(".cerrar-detalle") ||
-        tarjeta.classList.contains("activo")
-      ) {
-        tarjeta.classList.remove("activo");
-        return;
-      }
+if (!esMobile) {
+  if (esTouch && !window.matchMedia("(max-width: 768px)").matches) {
+    tarjetas.forEach((tarjeta) => {
+      tarjeta.addEventListener("click", (e) => {
+        tarjetas.forEach((t) => t.classList.remove("activo"));
 
-      tarjetas.forEach((t) => t.classList.remove("activo"));
+        tarjeta.classList.add("activo");
 
-      tarjeta.classList.add("activo");
-
-      contenedorTarjetas.scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-      });
-    });
-  });
-
-  document.getElementById("servicios").addEventListener("click", (e) => {
-    if (!e.target.closest(".servicio")) {
-      tarjetas.forEach((t) => t.classList.remove("activo"));
-    }
-  });
-} else {
-  let yaCentrado = false;
-
-  const observer = new IntersectionObserver(
-    ([entry]) => {
-      yaCentrado = entry.isIntersecting;
-    },
-    { threshold: 1 },
-  );
-  observer.observe(contenedorTarjetas);
-
-  tarjetas.forEach((tarjeta) => {
-    tarjeta.addEventListener("mouseenter", () => {
-      if (!yaCentrado) {
         contenedorTarjetas.scrollIntoView({
           behavior: "smooth",
           block: "center",
         });
+      });
+    });
+
+    document.getElementById("servicios").addEventListener("click", (e) => {
+      if (!e.target.closest(".servicio")) {
+        tarjetas.forEach((t) => t.classList.remove("activo"));
       }
     });
-  });
+  } else {
+    let yaCentrado = false;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        yaCentrado = entry.isIntersecting;
+      },
+      { threshold: 1 },
+    );
+    observer.observe(contenedorTarjetas);
+
+    tarjetas.forEach((tarjeta) => {
+      tarjeta.addEventListener("mouseenter", () => {
+        if (!yaCentrado) {
+          contenedorTarjetas.scrollIntoView({
+            behavior: "smooth",
+            block: "center",
+          });
+        }
+      });
+    });
+  }
 }
 
 //formulario

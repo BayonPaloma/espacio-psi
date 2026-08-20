@@ -541,11 +541,6 @@ a {
   width: 240px;
 }
 
-.servicio:hover {
-  transform: translateY(-5px);
-  background-color: rgba(255, 255, 255, 0.14);
-}
-
 .servicio i {
   font-size: 24px;
   color: #c2d3cd;
@@ -658,57 +653,6 @@ a {
   border-radius: 50%;
   font-size: 16px;
   cursor: pointer;
-}
-
-@media (hover: none) and (pointer: coarse) {
-  .cerrar-detalle {
-    display: block;
-  }
-
-  .servicio:hover .detalle-tarjeta {
-    opacity: 0;
-    visibility: hidden;
-  }
-
-  .servicio.activo .detalle-tarjeta {
-    opacity: 1;
-    visibility: visible;
-    transform: translate(-50%, -50%) scale(1);
-    pointer-events: auto;
-  }
-
-  #servicios:has(.servicio.activo)::before {
-    opacity: 1;
-    visibility: visible;
-  }
-}
-
-@media (hover: none) and (pointer: coarse) {
-  .cerrar-detalle {
-    display: block;
-  }
-
-  #servicios:has(.servicio:hover)::before {
-    opacity: 0;
-    visibility: hidden;
-  }
-
-  #servicios:has(.servicio.activo)::before {
-    opacity: 1;
-    visibility: visible;
-  }
-
-  .servicio:hover .detalle-tarjeta {
-    opacity: 0;
-    visibility: hidden;
-  }
-
-  .servicio.activo .detalle-tarjeta {
-    opacity: 1;
-    visibility: visible;
-    transform: translate(-50%, -50%) scale(1);
-    pointer-events: auto;
-  }
 }
 
 #ubicacion {
@@ -1276,6 +1220,9 @@ footer i {
     opacity: 1;
     visibility: visible;
     pointer-events: none;
+  }
+  .servicio:hover .detalle-tarjeta {
+    transform: none;
   }
 
   #servicios::before,
