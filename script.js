@@ -95,10 +95,11 @@ const tarjetas = document.querySelectorAll(".servicio");
 const esTouch = window.matchMedia(
   "(hover: none) and (pointer: coarse)",
 ).matches;
-if (esTouch) {
+const esMobile = window.matchMedia("(max-width: 768px)").matches;
+
+if (esTouch && !esMobile) {
   tarjetas.forEach((tarjeta) => {
     tarjeta.addEventListener("click", (e) => {
-      // Si tocó el botón de cerrar, o ya está activa, la cerramos
       if (
         e.target.closest(".cerrar-detalle") ||
         tarjeta.classList.contains("activo")
@@ -107,10 +108,8 @@ if (esTouch) {
         return;
       }
 
-      // Cerramos cualquier otra tarjeta abierta
       tarjetas.forEach((t) => t.classList.remove("activo"));
 
-      // Abrimos la tocada
       tarjeta.classList.add("activo");
 
       contenedorTarjetas.scrollIntoView({
@@ -120,14 +119,12 @@ if (esTouch) {
     });
   });
 
-  // Tocar el overlay (fuera de la tarjeta) también cierra
   document.getElementById("servicios").addEventListener("click", (e) => {
     if (!e.target.closest(".servicio")) {
       tarjetas.forEach((t) => t.classList.remove("activo"));
     }
   });
 } else {
-  // --- COMPORTAMIENTO DESKTOP: hover (lo que ya tenías) ---
   let yaCentrado = false;
 
   const observer = new IntersectionObserver(
@@ -149,6 +146,7 @@ if (esTouch) {
     });
   });
 }
+
 //formulario
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.querySelector("#contacto form");

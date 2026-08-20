@@ -646,7 +646,7 @@ a {
 }
 
 .cerrar-detalle {
-  display: none; /* solo se muestra en mobile */
+  display: none;
   position: absolute;
   top: 15px;
   right: 15px;
@@ -665,7 +665,6 @@ a {
     display: block;
   }
 
-  /* En mobile, el hover con CSS puro no sirve: se controla por JS con una clase */
   .servicio:hover .detalle-tarjeta {
     opacity: 0;
     visibility: hidden;
@@ -689,19 +688,16 @@ a {
     display: block;
   }
 
-  /* Anulamos el overlay basado en :hover */
   #servicios:has(.servicio:hover)::before {
     opacity: 0;
     visibility: hidden;
   }
 
-  /* El overlay ahora depende solo de .activo */
   #servicios:has(.servicio.activo)::before {
     opacity: 1;
     visibility: visible;
   }
 
-  /* El detalle también depende solo de .activo */
   .servicio:hover .detalle-tarjeta {
     opacity: 0;
     visibility: hidden;
@@ -1137,18 +1133,45 @@ footer i {
     transform: none;
   }
 
+  .resultados {
+    position: static;
+    width: 90%;
+    margin: 0 auto 60px;
+    padding: 30px 20px;
+    border-radius: 30px;
+  }
+
+  .tarjeta-resultado h3 {
+    font-size: 20px;
+  }
+
+  .resultados p {
+    font-size: 18px;
+  }
+
   #sobre-mi {
+    display: flex;
     flex-direction: column;
     align-items: center;
     padding: 50px 25px;
     width: 100%;
   }
 
-  #sobre-mi img {
-    width: 240px;
-    height: 240px;
-    object-fit: cover;
-    margin: 0 auto 35px;
+  .foto-irene {
+    width: 100%;
+    height: 100%;
+    margin: 40px auto;
+  }
+
+  .foto-irene img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin: 0%;
+  }
+
+  .foto-irene::after {
+    display: none;
   }
 
   .texto-irene {
@@ -1210,14 +1233,8 @@ footer i {
     margin: 35px auto 0;
   }
 
-  .servicio {
-    padding: 25px 20px;
-    border-radius: 16px;
-  }
-
-  .servicio i {
-    font-size: 22px;
-    margin-bottom: 10px;
+  #servicios {
+    padding-bottom: 40px;
   }
 
   .servicio h3 {
@@ -1227,11 +1244,48 @@ footer i {
 
   .servicio p {
     line-height: 1.55;
+    font-size: 20px;
+  }
+  .servicio {
+    height: 350px;
+    width: 450px;
+    margin: 0 auto;
+    padding: 30px;
+    cursor: default;
   }
 
   .servicio:hover {
     transform: none;
     background-color: rgba(255, 255, 255, 0.08);
+  }
+
+  .servicio > i,
+  .servicio > h3 {
+    display: none;
+  }
+
+  .detalle-tarjeta {
+    position: static;
+    transform: none;
+    width: 100%;
+    height: auto;
+    padding: 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: none;
+  }
+
+  .cerrar-detalle {
+    display: none;
+  }
+
+  #servicios::before,
+  #servicios:has(.servicio:hover)::before,
+  #servicios:has(.servicio.activo)::before {
+    display: none;
   }
 
   .form-container {
