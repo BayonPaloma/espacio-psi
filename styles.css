@@ -1191,7 +1191,8 @@ footer i {
     font-size: 18px;
   }
   .servicio {
-    height: 350px;
+    min-height: 350px;
+    height: auto;
     width: 80%;
     margin: 0 auto;
     padding: 30px;
