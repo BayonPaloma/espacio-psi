@@ -511,20 +511,34 @@ a {
   margin: 15px auto 0px;
 }
 
+.click {
+  text-align: center;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 18px;
+  font-weight: 200;
+  color: #c2d3cd;
+  margin: 15px auto 0px;
+}
 .contenedor-tarjetas {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 30px;
-  max-width: 900px;
   margin: 50px auto 0px;
 }
 
 .servicio {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
   background-color: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 20px;
   padding: 30px;
   transition: 0.3s ease;
+  height: 240px;
+  width: 240px;
 }
 
 .servicio:hover {
@@ -550,6 +564,155 @@ a {
   line-height: 1.6;
   font-size: 18px;
   margin: 0px;
+}
+
+#servicios::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.35s ease;
+  z-index: 100;
+  pointer-events: none;
+}
+
+#servicios:has(.servicio:hover)::before {
+  opacity: 1;
+  visibility: visible;
+}
+
+.servicio {
+  position: relative;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.servicio:hover {
+  z-index: 1000;
+  transform: translateY(-5px);
+  background-color: rgba(255, 255, 255, 0.14);
+}
+
+.detalle-tarjeta {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.85);
+  width: 420px;
+  height: 420px;
+  background: #013d3d;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 30px;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: 0.35s ease;
+  z-index: 999;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.6);
+}
+
+.detalle-tarjeta i {
+  font-size: 40px;
+  margin-bottom: 20px;
+  color: #c2d3cd;
+}
+
+.detalle-tarjeta h3 {
+  font-size: 26px;
+  margin: 0 0 20px;
+}
+
+.detalle-tarjeta p {
+  font-size: 17px;
+  line-height: 1.7;
+  color: #e3e9e6;
+}
+
+.servicio:hover .detalle-tarjeta {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -50%) scale(1);
+  pointer-events: auto;
+}
+
+.cerrar-detalle {
+  display: none; /* solo se muestra en mobile */
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .cerrar-detalle {
+    display: block;
+  }
+
+  /* En mobile, el hover con CSS puro no sirve: se controla por JS con una clase */
+  .servicio:hover .detalle-tarjeta {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .servicio.activo .detalle-tarjeta {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+    pointer-events: auto;
+  }
+
+  #servicios:has(.servicio.activo)::before {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .cerrar-detalle {
+    display: block;
+  }
+
+  /* Anulamos el overlay basado en :hover */
+  #servicios:has(.servicio:hover)::before {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  /* El overlay ahora depende solo de .activo */
+  #servicios:has(.servicio.activo)::before {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* El detalle también depende solo de .activo */
+  .servicio:hover .detalle-tarjeta {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .servicio.activo .detalle-tarjeta {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+    pointer-events: auto;
+  }
 }
 
 #ubicacion {

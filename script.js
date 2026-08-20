@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-//animaciones
+//animaciones de aparecer
 document.addEventListener("DOMContentLoaded", () => {
   const observerOptions = {
     root: null,
@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
   const elementsToAnimate = document.querySelectorAll(
-    ".col, .problematica, .texto-irene, .servicio",
+    ".col, .problematica, .texto-irene, .servicio, .tarjeta-resultado",
   );
 
   elementsToAnimate.forEach((el) => {
@@ -89,6 +89,66 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+// centrar tarjetas de servicios
+const contenedorTarjetas = document.querySelector(".contenedor-tarjetas");
+const tarjetas = document.querySelectorAll(".servicio");
+const esTouch = window.matchMedia(
+  "(hover: none) and (pointer: coarse)",
+).matches;
+if (esTouch) {
+  tarjetas.forEach((tarjeta) => {
+    tarjeta.addEventListener("click", (e) => {
+      // Si tocó el botón de cerrar, o ya está activa, la cerramos
+      if (
+        e.target.closest(".cerrar-detalle") ||
+        tarjeta.classList.contains("activo")
+      ) {
+        tarjeta.classList.remove("activo");
+        return;
+      }
+
+      // Cerramos cualquier otra tarjeta abierta
+      tarjetas.forEach((t) => t.classList.remove("activo"));
+
+      // Abrimos la tocada
+      tarjeta.classList.add("activo");
+
+      contenedorTarjetas.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+    });
+  });
+
+  // Tocar el overlay (fuera de la tarjeta) también cierra
+  document.getElementById("servicios").addEventListener("click", (e) => {
+    if (!e.target.closest(".servicio")) {
+      tarjetas.forEach((t) => t.classList.remove("activo"));
+    }
+  });
+} else {
+  // --- COMPORTAMIENTO DESKTOP: hover (lo que ya tenías) ---
+  let yaCentrado = false;
+
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      yaCentrado = entry.isIntersecting;
+    },
+    { threshold: 1 },
+  );
+  observer.observe(contenedorTarjetas);
+
+  tarjetas.forEach((tarjeta) => {
+    tarjeta.addEventListener("mouseenter", () => {
+      if (!yaCentrado) {
+        contenedorTarjetas.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+        });
+      }
+    });
+  });
+}
 //formulario
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.querySelector("#contacto form");
