@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Abordajes y especialidades</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Public+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f6f5f0;
+        --panel: #ffffff;
+        --pine: #1e332b;
+        --pine-soft: #3f5a4d;
+        --sage: #c7d3c6;
+        --sage-deep: #8fa593;
+        --gold: #a9814a;
+        --gold-soft: #f1e8d6;
+        --line: #e2e0d6;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background: var(--bg);
+        font-family: "Public Sans", sans-serif;
+        color: var(--pine);
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .wrap {
+        max-width: 1040px;
+        margin: 0 auto;
+        padding: 88px 32px 96px;
+      }
+
+      /* ---------- Header ---------- */
+      .eyebrow {
+        font-size: 13px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--gold);
+        font-weight: 600;
+        margin-bottom: 18px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .eyebrow::before {
+        content: "";
+        width: 28px;
+        height: 1px;
+        background: var(--gold);
+      }
+
+      h1 {
+        font-family: "Fraunces", serif;
+        font-weight: 500;
+        font-size: clamp(32px, 4vw, 46px);
+        line-height: 1.15;
+        letter-spacing: -0.01em;
+        max-width: 640px;
+        color: var(--pine);
+      }
+      h1 em {
+        font-style: italic;
+        color: var(--pine-soft);
+      }
+
+      .lede {
+        margin-top: 18px;
+        font-size: 16px;
+        line-height: 1.6;
+        color: var(--pine-soft);
+        max-width: 480px;
+      }
+
+      /* ---------- Abordajes cards ---------- */
+      .abordajes {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin-top: 56px;
+      }
+
+      .abordaje-card {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 4px;
+        padding: 36px 32px;
+        position: relative;
+      }
+
+      .abordaje-icon {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 22px;
+      }
+      .abordaje-icon svg {
+        width: 100%;
+        height: 100%;
+        stroke: var(--pine);
+      }
+
+      .abordaje-card h3 {
+        font-family: "Fraunces", serif;
+        font-weight: 500;
+        font-size: 21px;
+        margin-bottom: 14px;
+        color: var(--pine);
+      }
+
+      .abordaje-card p {
+        font-size: 15px;
+        line-height: 1.65;
+        color: var(--pine-soft);
+      }
+      .abordaje-card p + p {
+        margin-top: 10px;
+      }
+
+      /* ---------- Specialties ---------- */
+      .specialties-head {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        margin-top: 76px;
+        margin-bottom: 28px;
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 18px;
+      }
+      .specialties-head h2 {
+        font-family: "Fraunces", serif;
+        font-weight: 500;
+        font-size: 22px;
+      }
+      .specialties-head span {
+        font-size: 13px;
+        color: var(--pine-soft);
+      }
+
+      .spec-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0;
+      }
+
+      .spec-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+        padding: 16px 20px 16px 0;
+        border-bottom: 1px solid var(--line);
+      }
+      /* remove right border cleanliness by relying only on bottom lines */
+      .spec-item svg {
+        width: 19px;
+        height: 19px;
+        stroke: var(--pine-soft);
+        stroke-width: 1.6;
+        flex-shrink: 0;
+        margin-top: 2px;
+      }
+      .spec-item span {
+        font-size: 14.5px;
+        line-height: 1.4;
+        color: var(--pine);
+      }
+
+      /* ---------- Featured / TEA ---------- */
+      .featured {
+        margin-top: 20px;
+        background: linear-gradient(135deg, #23392f, #1a2c24);
+        border-radius: 4px;
+        padding: 40px 40px;
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        gap: 32px;
+        align-items: center;
+        color: #f4f1e8;
+      }
+
+      .featured-badge {
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        background: var(--gold-soft);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .featured-badge svg {
+        width: 24px;
+        height: 24px;
+        stroke: var(--gold);
+      }
+
+      .featured-text .tag {
+        font-size: 11.5px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--gold);
+        font-weight: 600;
+        margin-bottom: 8px;
+        display: block;
+      }
+      .featured-text h3 {
+        font-family: "Fraunces", serif;
+        font-weight: 500;
+        font-size: 22px;
+        margin-bottom: 8px;
+        color: #ffffff;
+      }
+      .featured-text p {
+        font-size: 14.5px;
+        line-height: 1.6;
+        color: #c9d2c7;
+        max-width: 480px;
+      }
+
+      .featured-cta {
+        font-size: 13.5px;
+        font-weight: 600;
+        color: #1a2c24;
+        background: var(--gold-soft);
+        padding: 12px 22px;
+        border-radius: 3px;
+        white-space: nowrap;
+        align-self: center;
+      }
+
+      @media (max-width: 760px) {
+        .abordajes {
+          grid-template-columns: 1fr;
+        }
+        .spec-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .featured {
+          grid-template-columns: 1fr;
+          text-align: left;
+        }
+        .featured-cta {
+          justify-self: start;
+        }
+      }
+      @media (max-width: 480px) {
+        .spec-grid {
+          grid-template-columns: 1fr;
+        }
+        .wrap {
+          padding: 56px 20px 64px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="eyebrow">Cómo trabajamos</div>
+      <h1>Dos formas de acompañar,<br /><em>un mismo cuidado.</em></h1>
+      <p class="lede">
+        Cada proceso terapéutico es distinto — por eso combinamos enfoques según
+        lo que la persona necesita en cada momento.
+      </p>
+
+      <div class="abordajes">
+        <div class="abordaje-card">
+          <div class="abordaje-icon">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke-width="1.4"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="12" cy="12" r="9" />
+              <path d="M12 7v5l3 3" />
+            </svg>
+          </div>
+          <h3>Terapia Cognitivo Conductual</h3>
+          <p>
+            Enfoque práctico y de corta duración, orientado a resultados
+            concretos.
+          </p>
+          <p>
+            Trabajamos la conexión entre pensamientos, emociones y conductas
+            para resolver problemas específicos.
+          </p>
+        </div>
+
+        <div class="abordaje-card">
+          <div class="abordaje-icon">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke-width="1.4"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M3 15c2-4 4-4 6 0s4 4 6 0 4-4 6 0" />
+              <path d="M3 9c2-4 4-4 6 0s4 4 6 0 4-4 6 0" />
+            </svg>
+          </div>
+          <h3>Terapias de Tercera Ola</h3>
+          <p>
+            Ayudan a cambiar la relación de la persona con sus emociones y
+            vivencias.
+          </p>
+          <p>
+            Priorizan la aceptación, la atención plena y los valores personales
+            como guía del proceso.
+          </p>
+        </div>
+      </div>
+
+      <div class="specialties-head">
+        <h2>Especialidades</h2>
+        <span>12 áreas de abordaje</span>
+      </div>
+
+      <div class="spec-grid">
+        <div class="spec-item">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M6 15a4 4 0 0 1 0-8 5 5 0 0 1 9.6-1.5A4.5 4.5 0 0 1 17.5 15H6z"
+            />
+          </svg>
+          <span>Ansiedad</span>
+        </div>
+        <div class="spec-item">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M12 21s-7-4.5-9.3-9A5.4 5.4 0 0 1 12 6a5.4 5.4 0 0 1 9.3 6c-2.3 4.5-9.3 9-9.3 9z"
+            />
+            <path d="M9 10.5h6" />
+          </svg>
+          <span>Depresión</span>
+        </div>
+        <div class="spec-item">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M13 2 4 14h6l-1 8 9-12h-6z" />
+          </svg>
+          <span>Estrés</span>
+        </div>
+        <div class="spec-item">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="8" cy="12" r="3" />
+            <circle cx="16" cy="12" r="3" />
+            <path d="M11 12h2" />
+          </svg>
+          <span>Problemas de pareja</span>
+        </div>
+        <div class="spec-item">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M12 3c2 3 5 6.5 5 10a5 5 0 0 1-10 0c0-3.5 3-7 5-10z" />
+          </svg>
+          <span>Duelo</span>
+        </div>
+        <div class="spec-item">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M18 8a2 2 0 0 0-2-2H9L4 12l5 6h7a2 2 0 0 0 2-2z" />
+          </svg>
+          <span>Trastornos de la conducta alimentaria</span>
+        </div>
+        <div class="spec-item">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M17.5 6.5a5 5 0 1 0-9.9 1 4 4 0 0 0 .4 7.9 4.5 4.5 0 0 0 8.6-1.9 5 5 0 0 0 .9-7z"
+            />
+          </svg>
+          <span>Adicciones conductuales</span>
+        </div>
+        <div class="spec-item">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M12 9v4M12 17h.01" />
+            <path
+              d="m10.3 3.9-8 14A1.6 1.6 0 0 0 3.7 20.5h16.6a1.6 1.6 0 0 0 1.4-2.6l-8-14a1.6 1.6 0 0 0-2.8 0z"
+            />
+          </svg>
+          <span>Miedos y fobias</span>
+        </div>
+        <div class="spec-item">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M21 12.5A8.5 8.5 0 1 1 11.5 4a6.5 6.5 0 0 0 9.5 8.5z" />
+          </svg>
+          <span>Trastornos del sueño</span>
+        </div>
+        <div class="spec-item">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M9 9h.01M15 9h.01" />
+            <path d="M8 14s1.5 2 4 2 4-2 4-2" />
+            <circle cx="12" cy="12" r="9" />
+          </svg>
+          <span>Trastornos de conducta</span>
+        </div>
+      </div>
+
+      <div class="featured">
+        <div class="featured-badge">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke-width="1.6"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M12 2a10 10 0 1 0 10 10c0-1-.5-1.5-1.5-1.5S19 11 18 11a3 3 0 0 1-3-3c0-1 .5-1.5-.5-2.5S13 4 12 4"
+            />
+            <circle
+              cx="8.5"
+              cy="10.5"
+              r=".6"
+              fill="var(--gold)"
+              stroke="none"
+            />
+          </svg>
+        </div>
+        <div class="featured-text">
+          <span class="tag">Servicio diferenciado</span>
+          <h3>Diagnóstico de TEA y TDAH</h3>
+          <p>
+            Evaluación diagnóstica completa para adultos y niños — un proceso
+            que en la zona ofrecen muy pocos centros, y que en general se cobra
+            aparte del resto de las consultas.
+          </p>
+        </div>
+        <div class="featured-cta">Ver proceso →</div>
+      </div>
+    </div>
+  </body>
+</html>
