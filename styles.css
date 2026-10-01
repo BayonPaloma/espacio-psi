@@ -943,6 +943,8 @@ footer i {
 
 .copyright a {
   text-decoration: underline;
+  gap: 0px;
+  display: inline-block;
 }
 
 .reveal-hidden {
